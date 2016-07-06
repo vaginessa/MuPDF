@@ -1,0 +1,11 @@
+# Created by .ignore support plugin (hsz.mobi)
+/MuPDF.bak/
+/.gradle/
+/.idea/
+/build/
+/gradle/
+/mupdf-source-master.zip
+/local.properties
+/local.properties.sample
+/MuPDF.iml
+/android.iml
