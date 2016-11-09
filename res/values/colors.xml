@@ -4,7 +4,7 @@
 	<color name="text_normal">#ffffff</color>
 
 	<color name="colorPrimary">#607d8b</color>
-	<color name="colorPrimaryDark">#607d8b</color>
+	<color name="colorPrimaryDark">#455a64</color>
 	<color name="colorAccent">#ff5722</color>
 
 	<color name="colorDarkTrans">#96323232</color>
