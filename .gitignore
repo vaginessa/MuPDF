@@ -9,3 +9,8 @@
 /local.properties.sample
 /MuPDF.iml
 /android.iml
+!/app/build/
+/app/build/
+/cropper/
+/gradlew
+/gradlew.bat

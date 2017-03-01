@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/build/intermediates/res/merged/debug/xml/user_settings.xml",
+        "source": "/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/src/main/res/xml/user_settings.xml"
+    },
+    {
+        "merged": "/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/build/intermediates/res/merged/debug/xml/file_paths.xml",
+        "source": "/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/src/main/res/xml/file_paths.xml"
+    }
+]

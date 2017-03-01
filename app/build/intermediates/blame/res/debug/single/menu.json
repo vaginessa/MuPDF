@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/build/intermediates/res/merged/debug/menu/menu_file.xml",
+        "source": "/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/src/main/res/menu/menu_file.xml"
+    },
+    {
+        "merged": "/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/build/intermediates/res/merged/debug/menu/menu_pdf.xml",
+        "source": "/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/src/main/res/menu/menu_pdf.xml"
+    }
+]
