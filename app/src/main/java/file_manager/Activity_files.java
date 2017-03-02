@@ -110,10 +110,6 @@ public class Activity_files extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
 
         listView = (ListView)findViewById(R.id.listNotes);
         filter_layout = (RelativeLayout) findViewById(R.id.filter_layout);
@@ -327,7 +323,6 @@ public class Activity_files extends AppCompatActivity {
                     intent.setAction(Intent.ACTION_VIEW);
                     intent.setData(uri);
                     startActivity(intent);
-                    finish();
                 } else {
                     helper_main.open(files_icon, Activity_files.this, pathFile, listView);
                 }
@@ -575,10 +570,6 @@ public class Activity_files extends AppCompatActivity {
                 sharedPref.edit().putString("sortDBF", "file_date").apply();
                 setTitle();
                 setFilesList();
-                return true;
-
-            case android.R.id.home:
-                finish();
                 return true;
         }
 

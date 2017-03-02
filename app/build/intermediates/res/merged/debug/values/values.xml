@@ -40,10 +40,10 @@
     <color name="button_normal">#00000000</color>
     <color name="colorAccent">#ffa000</color>
     <color name="colorAccentTrans">#80ffa000</color>
-    <color name="colorDarkTrans">#805d4037</color>
-    <color name="colorPDF">#616161</color>
-    <color name="colorPrimary">#795548</color>
-    <color name="colorPrimaryDark">#5d4037</color>
+    <color name="colorDarkTrans">#80009688</color>
+    <color name="colorPDF">#e0e0e0</color>
+    <color name="colorPrimary">#009688</color>
+    <color name="colorPrimaryDark">#00796b</color>
     <color name="design_bottom_navigation_shadow_color">#14000000</color>
     <color name="design_fab_shadow_end_color">@android:color/transparent</color>
     <color name="design_fab_shadow_mid_color">#14000000</color>

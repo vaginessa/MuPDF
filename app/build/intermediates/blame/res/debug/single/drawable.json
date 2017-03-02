@@ -84,6 +84,10 @@
         "source": "/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/src/main/res/drawable/file_image.xml"
     },
     {
+        "merged": "/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/build/intermediates/res/merged/debug/drawable/folder_light.xml",
+        "source": "/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/src/main/res/drawable/folder_light.xml"
+    },
+    {
         "merged": "/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/build/intermediates/res/merged/debug/drawable/arrow_up_dark.xml",
         "source": "/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/src/main/res/drawable/arrow_up_dark.xml"
     },

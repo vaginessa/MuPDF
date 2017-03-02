@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/build/intermediates/res/merged/debug/drawable-xhdpi/ic_arrow_right_white_48dp.png",
-        "source": "/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/src/main/res/drawable-xhdpi/ic_arrow_right_white_48dp.png"
-    },
-    {
         "merged": "/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/build/intermediates/res/merged/debug/drawable-xhdpi/ic_arrow_up_grey600_48dp.png",
         "source": "/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/src/main/res/drawable-xhdpi/ic_arrow_up_grey600_48dp.png"
+    },
+    {
+        "merged": "/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/build/intermediates/res/merged/debug/drawable-xhdpi/ic_arrow_right_white_48dp.png",
+        "source": "/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/src/main/res/drawable-xhdpi/ic_arrow_right_white_48dp.png"
     },
     {
         "merged": "/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/build/intermediates/res/merged/debug/drawable-xhdpi/ic_pencil_white_48dp.png",

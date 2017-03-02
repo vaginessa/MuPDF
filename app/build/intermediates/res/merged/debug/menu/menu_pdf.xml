@@ -14,6 +14,7 @@
         android:id="@+id/action_folder"
         android:orderInCategory="100"
         android:title="@string/action_folderPDF"
-        app:showAsAction="never" />
+        android:icon="@drawable/folder_light"
+        app:showAsAction="ifRoom" />
 
 </menu>

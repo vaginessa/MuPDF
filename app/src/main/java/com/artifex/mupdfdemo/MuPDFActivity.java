@@ -1252,7 +1252,6 @@ public class MuPDFActivity extends AppCompatActivity implements FilePicker.FileP
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 
-
 		String name = sharedPref.getString("title", "");
 		String path = sharedPref.getString("pathPDF", "");
 		File pdfFile = new File(path);
@@ -1308,7 +1307,7 @@ public class MuPDFActivity extends AppCompatActivity implements FilePicker.FileP
 				Intent LaunchIntent = getPackageManager().getLaunchIntentForPackage("de.baumann.pdfcreator");
 				LaunchIntent.setAction("pdf_openFolder");
 				startActivity(LaunchIntent);
-				finish();
+				System.exit(1);
 			} else {
 				Intent intent = new Intent(MuPDFActivity.this, Activity_files.class);
 				intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
@@ -1318,11 +1317,9 @@ public class MuPDFActivity extends AppCompatActivity implements FilePicker.FileP
 		}
 
 		if (id == android.R.id.home) {
-
 			Intent LaunchIntent = getPackageManager().getLaunchIntentForPackage("de.baumann.pdfcreator");
-			LaunchIntent.setAction("pdf_openFolder");
 			startActivity(LaunchIntent);
-			finish();
+			System.exit(1);
 		}
 
 		return super.onOptionsItemSelected(item);
@@ -1379,7 +1376,7 @@ public class MuPDFActivity extends AppCompatActivity implements FilePicker.FileP
 			alert.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.no), listener);
 			alert.show();
 		} else {
-			super.onBackPressed();
+			System.exit(1);
 		}
 	}
 
