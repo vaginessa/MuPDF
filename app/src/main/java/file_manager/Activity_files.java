@@ -95,6 +95,8 @@ public class Activity_files extends AppCompatActivity {
         boolean isInstalled = isPackageInstalled("de.baumann.pdfcreator", pm);
 
         if (isInstalled) {
+            PackageManager p = getPackageManager();
+            p.setComponentEnabledSetting(getComponentName(), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, 0);
             Intent LaunchIntent = getPackageManager().getLaunchIntentForPackage("de.baumann.pdfcreator");
             LaunchIntent.setAction("pdf_openFolder");
             startActivity(LaunchIntent);

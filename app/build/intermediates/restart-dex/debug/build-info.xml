@@ -5,40 +5,33 @@
     density="xhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="7491062596409"
+    timestamp="19798626044074"
     token="7766616245228419441"
-    verifier="COLD_SWAP_REQUESTED" >
+    verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="666" />
+        duration="895" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="21" />
+        duration="98" />
     <task
         name="verifier"
-        duration="0" />
+        duration="9" />
 
     <artifact
-        location="/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex"
-        type="DEX" />
+        location="/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/build/outputs/apk/app-debug.apk"
+        type="MAIN" />
 
     <build
-        timestamp="5903807671989"
+        timestamp="19798626044074"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />
-    </build>
-    <build
-        timestamp="7491062596409"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex"
-            type="DEX" />
     </build>
 
 </instant-run>

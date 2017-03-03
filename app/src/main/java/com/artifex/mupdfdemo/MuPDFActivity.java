@@ -1254,12 +1254,12 @@ public class MuPDFActivity extends AppCompatActivity implements FilePicker.FileP
 	public boolean onOptionsItemSelected(MenuItem item) {
 
 		String path = sharedPref.getString("pathPDF", "");
+		String FileTitle = path.substring(path.lastIndexOf("/")+1);
 		File pdfFile = new File(path);
 
 		int id = item.getItemId();
 
 		if (id == R.id.action_share) {
-			String FileTitle = path.substring(path.lastIndexOf("/")+1);
 			String text = getString(R.string.action_share_Text);
 
 			Uri myUri= Uri.fromFile(pdfFile);
@@ -1273,25 +1273,17 @@ public class MuPDFActivity extends AppCompatActivity implements FilePicker.FileP
 		}
 
 		if (id == R.id.action_folder) {
-
-			PackageManager pm = getPackageManager();
-			boolean isInstalled = isPackageInstalled("de.baumann.pdfcreator", pm);
-
-			if (isInstalled) {
-				Intent LaunchIntent = getPackageManager().getLaunchIntentForPackage("de.baumann.pdfcreator");
-				LaunchIntent.setAction("pdf_openFolder");
-				startActivity(LaunchIntent);
-				System.exit(1);
-			} else {
-				Intent intent = new Intent(MuPDFActivity.this, Activity_files.class);
-				intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-				startActivity(intent);
-				finish();
-			}
+			Intent intent = new Intent(MuPDFActivity.this, Activity_files.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+			startActivity(intent);
+			finish();
 		}
 
 		if (id == android.R.id.home) {
 			Intent LaunchIntent = getPackageManager().getLaunchIntentForPackage("de.baumann.pdfcreator");
+			LaunchIntent.setAction("pdf_openFolder");
+			LaunchIntent.putExtra("path", path);
+			LaunchIntent.putExtra("name", FileTitle);
 			startActivity(LaunchIntent);
 			System.exit(1);
 		}
@@ -1301,6 +1293,13 @@ public class MuPDFActivity extends AppCompatActivity implements FilePicker.FileP
 
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
+
+		PackageManager pm = getPackageManager();
+		boolean isInstalled = isPackageInstalled("de.baumann.pdfcreator", pm);
+
+		if (isInstalled) {
+			menu.findItem(R.id.action_folder).setVisible(false);
+		}
 
 		if (sharedPref.getString("menu", "").equals("no")) {
 			menu.findItem(R.id.action_share).setVisible(false);
@@ -1328,8 +1327,7 @@ public class MuPDFActivity extends AppCompatActivity implements FilePicker.FileP
 
 	@Override
 	protected void onStop() {
-		if (core != null)
-		{
+		if (core != null) {
 			destroyAlertWaiter();
 			core.stopAlerts();
 		}
