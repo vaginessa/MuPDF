@@ -28,7 +28,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.preference.PreferenceManager;
 
-import de.baumann.pdfcreator.R;
+import de.baumann.pdfview.R;
 
 
 class DbAdapter_Files {

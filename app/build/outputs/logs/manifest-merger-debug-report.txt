@@ -2,7 +2,7 @@
 manifest
 ADDED from /home/juergen/Projekte/Android/Android_Studio/MuPDF/app/src/main/AndroidManifest.xml:2:1-122:12
 	package
-		ADDED from /home/juergen/Projekte/Android/Android_Studio/MuPDF/app/src/main/AndroidManifest.xml:4:5-36
+		ADDED from /home/juergen/Projekte/Android/Android_Studio/MuPDF/app/src/main/AndroidManifest.xml:4:5-33
 		INJECTED from /home/juergen/Projekte/Android/Android_Studio/MuPDF/app/src/main/AndroidManifest.xml
 		INJECTED from /home/juergen/Projekte/Android/Android_Studio/MuPDF/app/src/main/AndroidManifest.xml
 	android:versionName

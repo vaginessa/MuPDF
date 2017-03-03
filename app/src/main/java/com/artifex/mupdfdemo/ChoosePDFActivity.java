@@ -21,7 +21,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.ListView;
 
-import de.baumann.pdfcreator.R;
+import de.baumann.pdfview.R;
 
 enum Purpose {
 	PickPDF,

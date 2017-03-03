@@ -54,7 +54,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.concurrent.Executor;
 
-import de.baumann.pdfcreator.R;
+import de.baumann.pdfview.R;
 import file_manager.Activity_files;
 
 class ThreadPerTaskExecutor implements Executor {
@@ -231,26 +231,22 @@ public class MuPDFActivity extends AppCompatActivity implements FilePicker.FileP
 		}
 	}
 
-	private MuPDFCore openFile(String path)
-	{
+	private MuPDFCore openFile(String path) {
 		int lastSlashPos = path.lastIndexOf('/');
 		mFileName = new String(lastSlashPos == -1
 					? path
 					: path.substring(lastSlashPos+1));
 		System.out.println("Trying to open " + path);
-		try
-		{
+		try {
 			core = new MuPDFCore(this, path);
 			// New file: drop the old outline data
 			OutlineActivityData.set(null);
 		}
-		catch (Exception e)
-		{
+		catch (Exception e) {
 			System.out.println(e);
 			return null;
 		}
-		catch (java.lang.OutOfMemoryError e)
-		{
+		catch (java.lang.OutOfMemoryError e) {
 			//  out of memory is not an Exception, so we catch it separately.
 			System.out.println(e);
 			return null;
@@ -258,8 +254,7 @@ public class MuPDFActivity extends AppCompatActivity implements FilePicker.FileP
 		return core;
 	}
 
-	private MuPDFCore openBuffer(byte buffer[], String magic)
-	{
+	private MuPDFCore openBuffer(byte buffer[], String magic) {
 		System.out.println("Trying to open byte buffer");
 		try
 		{
@@ -317,11 +312,12 @@ public class MuPDFActivity extends AppCompatActivity implements FilePicker.FileP
 
 			if (Intent.ACTION_VIEW.equals(intent.getAction())) {
 				Uri uri = intent.getData();
-				
-				
+
+
 
 				System.out.println("URI to open is: " + uri);
 				if (uri.toString().startsWith("content://")) {
+
 					String reason = null;
 					try {
 						InputStream is = getContentResolver().openInputStream(uri);
@@ -377,11 +373,25 @@ public class MuPDFActivity extends AppCompatActivity implements FilePicker.FileP
 					}
 				}
 				if (buffer != null) {
-					sharedPref.edit().putString("menu", "no").apply();
+
+					String path = intent.getStringExtra("path");
+					String name = intent.getStringExtra("name");
+
+					if (path == null || name == null) {
+						sharedPref.edit().putString("menu", "no").apply();
+					} else {
+						setTitle(name);
+
+						sharedPref.edit().putString("pathPDF", path).apply();
+						sharedPref.edit().putString("title", name).apply();
+					}
+
 					core = openBuffer(buffer, intent.getType());
 				} else {
 					String pathToEdit = uri.getPath();
 					final String fileName = pathToEdit.substring(pathToEdit.lastIndexOf("/")+1);
+
+					setTitle(fileName);
 
 					sharedPref.edit().putString("pathPDF", pathToEdit).apply();
 					sharedPref.edit().putString("title", fileName).apply();
@@ -398,8 +408,7 @@ public class MuPDFActivity extends AppCompatActivity implements FilePicker.FileP
 				requestPassword(savedInstanceState);
 				return;
 			}
-			if (core != null && core.countPages() == 0)
-			{
+			if (core != null && core.countPages() == 0) {
 				core = null;
 			}
 		}
@@ -562,17 +571,14 @@ public class MuPDFActivity extends AppCompatActivity implements FilePicker.FileP
 		});
 
 
-		if (core.fileFormat().startsWith("PDF") && core.isUnencryptedPDF() && !core.wasOpenedFromBuffer())
-		{
+		if (core.fileFormat().startsWith("PDF") && core.isUnencryptedPDF() && !core.wasOpenedFromBuffer()) {
 			mAnnotButton.setOnClickListener(new View.OnClickListener() {
 				public void onClick(View v) {
 					mTopBarMode = TopBarMode.Annot;
 					mTopBarSwitcher.setDisplayedChild(mTopBarMode.ordinal());
 				}
 			});
-		}
-		else
-		{
+		} else {
 			mAnnotButton.setVisibility(View.GONE);
 		}
 
@@ -690,8 +696,7 @@ public class MuPDFActivity extends AppCompatActivity implements FilePicker.FileP
 		case PROOF_REQUEST:
 			//  we're returning from a proofing activity
 
-			if (mProofFile != null)
-			{
+			if (mProofFile != null) {
 				core.endProof(mProofFile);
 				mProofFile = null;
 			}
@@ -730,7 +735,6 @@ public class MuPDFActivity extends AppCompatActivity implements FilePicker.FileP
 
 		if (mTopBarMode == TopBarMode.Search)
 			outState.putBoolean("SearchMode", true);
-
 	}
 
 	@Override
@@ -748,8 +752,7 @@ public class MuPDFActivity extends AppCompatActivity implements FilePicker.FileP
 		}
 	}
 
-	public void onDestroy()
-	{
+	public void onDestroy() {
 		if (mDocView != null) {
 			mDocView.applyToChildren(new ReaderView.ViewMapper() {
 				void applyToView(View view) {
@@ -928,8 +931,7 @@ public class MuPDFActivity extends AppCompatActivity implements FilePicker.FileP
 
 
 
-	public void OnSepsButtonClick(final View v)
-	{
+	public void OnSepsButtonClick(final View v) {
 		if (isProofing()) {
 
 			//  get the current page
@@ -1064,7 +1066,6 @@ public class MuPDFActivity extends AppCompatActivity implements FilePicker.FileP
 			//  show the menu
 			menu.show();
 		}
-
 	}
 
 	public void OnCopyTextButtonClick(View v) {
@@ -1252,50 +1253,23 @@ public class MuPDFActivity extends AppCompatActivity implements FilePicker.FileP
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 
-		String name = sharedPref.getString("title", "");
 		String path = sharedPref.getString("pathPDF", "");
 		File pdfFile = new File(path);
 
 		int id = item.getItemId();
 
 		if (id == R.id.action_share) {
-			if (sharedPref.getString("menu", "").equals("yes")) {
+			String FileTitle = path.substring(path.lastIndexOf("/")+1);
+			String text = getString(R.string.action_share_Text);
 
-				String FileTitle = path.substring(path.lastIndexOf("/")+1);
-				String text = getString(R.string.action_share_Text);
-
-				Uri myUri= Uri.fromFile(pdfFile);
-				Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-				sharingIntent.setType("application/pdf");
-				sharingIntent.putExtra(Intent.EXTRA_STREAM, myUri);
-				sharingIntent.putExtra(Intent.EXTRA_SUBJECT, FileTitle);
-				sharingIntent.putExtra(Intent.EXTRA_TEXT, text + " " + FileTitle);
-				sharingIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-				startActivity(Intent.createChooser(sharingIntent, getString(R.string.action_share_with)));
-			} else {
-				Snackbar snackbar = Snackbar
-						.make(mDocView, getString(R.string.action_folderPDF_toast), Snackbar.LENGTH_LONG)
-						.setAction(getString(R.string.toast_yes), new View.OnClickListener() {
-							@Override
-							public void onClick(View view) {
-								PackageManager pm = getPackageManager();
-								boolean isInstalled = isPackageInstalled("de.baumann.pdfcreator", pm);
-
-								if (isInstalled) {
-									Intent LaunchIntent = getPackageManager().getLaunchIntentForPackage("de.baumann.pdfcreator");
-									LaunchIntent.setAction("pdf_openFolder");
-									startActivity(LaunchIntent);
-									finish();
-								} else {
-									Intent intent = new Intent(MuPDFActivity.this, Activity_files.class);
-									intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-									startActivity(intent);
-									finish();
-								}
-							}
-						});
-				snackbar.show();
-			}
+			Uri myUri= Uri.fromFile(pdfFile);
+			Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+			sharingIntent.setType("application/pdf");
+			sharingIntent.putExtra(Intent.EXTRA_STREAM, myUri);
+			sharingIntent.putExtra(Intent.EXTRA_SUBJECT, FileTitle);
+			sharingIntent.putExtra(Intent.EXTRA_TEXT, text + " " + FileTitle);
+			sharingIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+			startActivity(Intent.createChooser(sharingIntent, getString(R.string.action_share_with)));
 		}
 
 		if (id == R.id.action_folder) {
@@ -1327,6 +1301,11 @@ public class MuPDFActivity extends AppCompatActivity implements FilePicker.FileP
 
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
+
+		if (sharedPref.getString("menu", "").equals("no")) {
+			menu.findItem(R.id.action_share).setVisible(false);
+		}
+
 		if (mButtonsVisible && mTopBarMode != TopBarMode.Search) {
 			hideButtons();
 		} else {

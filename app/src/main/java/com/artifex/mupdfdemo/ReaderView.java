@@ -19,7 +19,7 @@ import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.Scroller;
 
-import de.baumann.pdfcreator.R;
+import de.baumann.pdfview.R;
 
 public class ReaderView
 		extends AdapterView<Adapter>

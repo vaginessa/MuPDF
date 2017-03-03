@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import de.baumann.pdfcreator.R;
+import de.baumann.pdfview.R;
 
 public class ChoosePDFAdapter extends BaseAdapter {
 	private final LinkedList<ChoosePDFItem> mItems;

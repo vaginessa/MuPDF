@@ -17,7 +17,7 @@ import android.widget.EditText;
 
 import java.io.File;
 
-import de.baumann.pdfcreator.R;
+import de.baumann.pdfview.R;
 
 public class helper_main {
 

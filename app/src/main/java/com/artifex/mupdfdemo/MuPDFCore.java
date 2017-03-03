@@ -6,7 +6,7 @@ import android.graphics.RectF;
 
 import java.util.ArrayList;
 
-import de.baumann.pdfcreator.R;
+import de.baumann.pdfview.R;
 
 @SuppressWarnings("JniMissingFunction")
 public class MuPDFCore

@@ -66,7 +66,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import de.baumann.pdfcreator.R;
+import de.baumann.pdfview.R;
 import helper.helper_main;
 
 import static android.content.ContentValues.TAG;
@@ -174,7 +174,7 @@ public class Activity_files extends AppCompatActivity {
 
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
 
-            String file_Name = file.getName().substring(0,1).toUpperCase() + file.getName().substring(1).toLowerCase();
+            String file_Name = file.getName().substring(0,1).toUpperCase() + file.getName().substring(1);
             String file_Size = getReadableFileSize(file.length());
             String file_date = formatter.format(new Date(file.lastModified()));
             String file_path = file.getAbsolutePath();

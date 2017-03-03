@@ -7,7 +7,7 @@ import android.content.DialogInterface;
 import android.graphics.RectF;
 import android.os.Handler;
 
-import de.baumann.pdfcreator.R;
+import de.baumann.pdfview.R;
 
 class ProgressDialogX extends ProgressDialog {
 	ProgressDialogX(Context context) {
