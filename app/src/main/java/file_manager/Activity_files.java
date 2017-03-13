@@ -163,44 +163,43 @@ public class Activity_files extends AppCompatActivity {
         String folder = sharedPref.getString("folder",
                 Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath());
 
-        File f = new File(sharedPref.getString("files_startFolder",
-                folder));
+        File f = new File(sharedPref.getString("files_startFolder", folder));
         final File[] files = f.listFiles();
 
-        if (files.length == 0) {
+        if (files == null || files.length == 0) {
             Snackbar.make(listView, R.string.toast_files, Snackbar.LENGTH_LONG).show();
-        }
+        } else {
+            // looping through all items <item>
+            for (File file : files) {
 
-        // looping through all items <item>
-        for (File file : files) {
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
 
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+                String file_Name = file.getName().substring(0,1).toUpperCase() + file.getName().substring(1);
+                String file_Size = getReadableFileSize(file.length());
+                String file_date = formatter.format(new Date(file.lastModified()));
+                String file_path = file.getAbsolutePath();
 
-            String file_Name = file.getName().substring(0,1).toUpperCase() + file.getName().substring(1);
-            String file_Size = getReadableFileSize(file.length());
-            String file_date = formatter.format(new Date(file.lastModified()));
-            String file_path = file.getAbsolutePath();
+                String file_ext;
+                if (file.isDirectory()) {
+                    file_ext = ".";
+                } else {
+                    file_ext = file.getAbsolutePath().substring(file.getAbsolutePath().lastIndexOf("."));
+                }
 
-            String file_ext;
-            if (file.isDirectory()) {
-                file_ext = ".";
-            } else {
-                file_ext = file.getAbsolutePath().substring(file.getAbsolutePath().lastIndexOf("."));
-            }
+                db.open();
 
-            db.open();
-
-            if (file_ext.equals(".") ||
+                if (file_ext.equals(".") ||
                     file_ext.equals(".pdf") ||
                     file_ext.equals(".") ||
                     file_ext.equals(".jpg") ||
                     file_ext.equals(".JPG") ||
                     file_ext.equals(".jpeg") ||
                     file_ext.equals(".png")) {
-                if(db.isExist(file_Name)) {
-                    Log.i(TAG, "Entry exists" + file_Name);
-                } else {
-                    db.insert(file_Name, file_Size, file_ext, file_path, file_date);
+                    if(db.isExist(file_Name)) {
+                        Log.i(TAG, "Entry exists" + file_Name);
+                    } else {
+                        db.insert(file_Name, file_Size, file_ext, file_path, file_date);
+                    }
                 }
             }
         }

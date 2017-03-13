@@ -1,7 +1,0 @@
-#Fri Mar 03 18:51:46 CET 2017
-base.0=/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_0d19ba2103c9a00220a891cf68960895f44f991e
-renamed.1=classes2.dex
-renamed.0=classes.dex
-file.1=/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_71bfcd6f42813da759fb2c207683b26b2ba7b58b/classes.dex
-base.1=/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_71bfcd6f42813da759fb2c207683b26b2ba7b58b
-file.0=/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_0d19ba2103c9a00220a891cf68960895f44f991e/classes.dex

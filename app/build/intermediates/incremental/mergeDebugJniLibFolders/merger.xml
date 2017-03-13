@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/src/main/jniLibs"/><source path="/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/src/main/libs"><file name="armeabi-v7a/libmupdf_java.so" path="/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/src/main/libs/armeabi-v7a/libmupdf_java.so"/></source></dataSet><dataSet config="debug"><source path="/home/juergen/Projekte/Android/Android_Studio/MuPDF/app/src/debug/jniLibs"/></dataSet></merger>
