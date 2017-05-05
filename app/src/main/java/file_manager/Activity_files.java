@@ -174,7 +174,7 @@ public class Activity_files extends AppCompatActivity {
 
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
 
-                String file_Name = file.getName().substring(0,1).toUpperCase() + file.getName().substring(1);
+                String file_Name = file.getName();
                 String file_Size = getReadableFileSize(file.length());
                 String file_date = formatter.format(new Date(file.lastModified()));
                 String file_path = file.getAbsolutePath();
